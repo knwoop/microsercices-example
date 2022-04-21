@@ -33,6 +33,14 @@ gen-proto: $(BUF) $(PROTOC_GEN_GO) $(PROTOC_GEN_GO_GRPC) $(PROTOC_GEN_GRPC_GATEW
 	$(BUF) generate \
 		--path ./services/
 
+.PHONY: up/gateway
+up/gateway:
+	@go run services/gateway/main.go
+
+.PHONY: up/greeting
+up/greeting:
+	@go run services/greeting/main.go
+
 .PHONY: clean
 clean:
 	rm -f $(BIN_DIR)/*

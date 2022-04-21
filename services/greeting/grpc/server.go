@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 
 	pb "github.com/knwoop/microsercices-example/services/greeting/proto"
 )
@@ -25,6 +26,8 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 func New() (*grpc.Server, error) {
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &server{})
+
+	reflection.Register(s)
 
 	return s, nil
 }
