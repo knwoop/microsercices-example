@@ -9,7 +9,11 @@ import "google/api/annotations.proto";
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloReply) {
+    option (google.api.http) = {
+      get: "/say_hello/{name}"
+    };
+  }
 }
 
 // The request message containing the user's name.
