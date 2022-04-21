@@ -1,7 +1,9 @@
-
-
----
-version: v1beta1
-name: buf.build/knwoop/microservices-example
+version: v1
 deps:
   - buf.build/googleapis/googleapis
+lint:
+   use:
+     - DEFAULT
+breaking:
+   use:
+     - FILE

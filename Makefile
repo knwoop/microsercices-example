@@ -1,9 +1,9 @@
 OS   := $(shell go env GOOS)
 ARCH := $(shell go env GOARCH)
 
-BUF_VERSION                := 0.44.0
-PROTOC_GEN_GO_VERSION      := 1.27.1
-PROTOC_GEN_GO_GRPC_VERSION := 1.1.0
+BUF_VERSION                := 1.3.1
+PROTOC_GEN_GO_VERSION      := 1.28.0
+PROTOC_GEN_GO_GRPC_VERSION := 1.2.0
 
 BIN_DIR := $(shell pwd)/bin
 
