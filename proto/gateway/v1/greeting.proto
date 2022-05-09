@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package knwoop.microservices_example.gateway;
+package proto.gateway.v1;
 
 option go_package = "github.com/knwoop/microservices-example/gen/proto/gateway";
 
 import "google/api/annotations.proto";
 
-// The greeting service definition.
-service Greeter {
+// The greeting service for gateway definition.
+service GreeterService {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {
+  rpc SayHello (SayHelloRequest) returns (GreeterServiceSayHelloResponse) {
     option (google.api.http) = {
       get: "/say_hello/{name}"
     };
@@ -17,11 +17,11 @@ service Greeter {
 }
 
 // The request message containing the user's name.
-message HelloRequest {
+message SayHelloRequest {
   string name = 1;
 }
 
 // The response message containing the greetings
-message HelloReply {
+message GreeterServiceSayHelloResponse {
   string message = 1;
 }

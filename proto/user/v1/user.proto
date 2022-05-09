@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proto.user.v1;
+
+option go_package = "github.com/knwoop/microservices-example/proto/user";
+
+// The user service definition.
+service UserService {
+  // Get User By ID
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+}

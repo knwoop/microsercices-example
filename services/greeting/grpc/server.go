@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	pb "github.com/knwoop/microsercices-example/services/greeting/proto"
+	pb "github.com/knwoop/microsercices-example/gen/proto/greeting"
 )
 
 var _ pb.GreeterServer = (*server)(nil)
