@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: proto/greeting/greeting.proto
 
-package proto
+package greeting
 
 import (
 	context "context"

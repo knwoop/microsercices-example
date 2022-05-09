@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package knwoop.microservices_example.greeting;
 
-option go_package = "github.com/knwoop/microservices-example/services/greeting/proto";
+option go_package = "github.com/knwoop/microservices-example/proto/greeting";
 
 // The greeting service definition.
 service Greeter {
