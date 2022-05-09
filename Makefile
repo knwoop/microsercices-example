@@ -31,7 +31,7 @@ $(PROTOC_GEN_GRPC_GATEWAY):
 .PHONY: gen-proto
 gen-proto: $(BUF) $(PROTOC_GEN_GO) $(PROTOC_GEN_GO_GRPC) $(PROTOC_GEN_GRPC_GATEWAY)
 	$(BUF) generate \
-		--path ./services/
+		--path ./proto
 
 .PHONY: up/gateway
 up/gateway:
