@@ -7,7 +7,7 @@ option go_package = "github.com/knwoop/microservices-example/gen/proto/gateway";
 // The greeting service definition.
 service GreeterService {
   // Sends a greeting
-  rpc SayHello (SayHelloRequest) returns (GreeterServiceSayHelloResponse);
+  rpc SayHello (SayHelloRequest) returns (SayHelloResponse);
 }
 
 // The request message containing the user's name.
@@ -16,6 +16,6 @@ message SayHelloRequest {
 }
 
 // The response message containing the greetings
-message GreeterServiceSayHelloResponse {
+message SayHelloResponse {
   string message = 1;
 }

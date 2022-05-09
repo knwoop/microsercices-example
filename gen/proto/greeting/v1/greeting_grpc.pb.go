@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GreeterServiceClient interface {
 	// Sends a greeting
-	SayHello(ctx context.Context, in *SayHelloRequest, opts ...grpc.CallOption) (*GreeterServiceSayHelloResponse, error)
+	SayHello(ctx context.Context, in *SayHelloRequest, opts ...grpc.CallOption) (*SayHelloResponse, error)
 }
 
 type greeterServiceClient struct {
@@ -34,8 +34,8 @@ func NewGreeterServiceClient(cc grpc.ClientConnInterface) GreeterServiceClient {
 	return &greeterServiceClient{cc}
 }
 
-func (c *greeterServiceClient) SayHello(ctx context.Context, in *SayHelloRequest, opts ...grpc.CallOption) (*GreeterServiceSayHelloResponse, error) {
-	out := new(GreeterServiceSayHelloResponse)
+func (c *greeterServiceClient) SayHello(ctx context.Context, in *SayHelloRequest, opts ...grpc.CallOption) (*SayHelloResponse, error) {
+	out := new(SayHelloResponse)
 	err := c.cc.Invoke(ctx, "/proto.greeting.v1.GreeterService/SayHello", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (c *greeterServiceClient) SayHello(ctx context.Context, in *SayHelloRequest
 // for forward compatibility
 type GreeterServiceServer interface {
 	// Sends a greeting
-	SayHello(context.Context, *SayHelloRequest) (*GreeterServiceSayHelloResponse, error)
+	SayHello(context.Context, *SayHelloRequest) (*SayHelloResponse, error)
 	mustEmbedUnimplementedGreeterServiceServer()
 }
 
@@ -56,7 +56,7 @@ type GreeterServiceServer interface {
 type UnimplementedGreeterServiceServer struct {
 }
 
-func (UnimplementedGreeterServiceServer) SayHello(context.Context, *SayHelloRequest) (*GreeterServiceSayHelloResponse, error) {
+func (UnimplementedGreeterServiceServer) SayHello(context.Context, *SayHelloRequest) (*SayHelloResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
 }
 func (UnimplementedGreeterServiceServer) mustEmbedUnimplementedGreeterServiceServer() {}

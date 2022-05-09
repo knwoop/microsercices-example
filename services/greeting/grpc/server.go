@@ -7,25 +7,25 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	pb "github.com/knwoop/microsercices-example/gen/proto/greeting"
+	pb "github.com/knwoop/microsercices-example/gen/proto/greeting/v1"
 )
 
-var _ pb.GreeterServer = (*server)(nil)
+var _ pb.GreeterServiceServer = (*server)(nil)
 
 // server is used to implement helloworld.GreeterServer.
 type server struct {
-	pb.UnimplementedGreeterServer
+	pb.UnimplementedGreeterServiceServer
 }
 
 // SayHello implements helloworld.GreeterServer
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+func (s *server) SayHello(ctx context.Context, in *pb.SayHelloRequest) (*pb.SayHelloResponse, error) {
 	log.Printf("Received: %v", in.GetName())
-	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
+	return &pb.SayHelloResponse{Message: "Hello " + in.GetName()}, nil
 }
 
 func New() (*grpc.Server, error) {
 	s := grpc.NewServer()
-	pb.RegisterGreeterServer(s, &server{})
+	pb.RegisterGreeterServiceServer(s, &server{})
 
 	reflection.Register(s)
 
