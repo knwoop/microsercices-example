@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package knwoop.microservices_example.greeting;
+package knwoop.microservices_example.gateway;
 
-option go_package = "github.com/knwoop/microservices-example/services/greeting/proto";
+option go_package = "github.com/knwoop/microservices-example/gen/gateway";
 
 import "google/api/annotations.proto";
 
