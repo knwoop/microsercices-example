@@ -12,3 +12,7 @@ plugins:
     path: ./bin/protoc-gen-grpc-gateway
     out: ./gen
     opt: paths=source_relative
+  - name: protoc-gen-doc
+    path: ./bin/protoc-gen-doc
+    out: ./gen
+    opt: markdown,docs.md,source_relative

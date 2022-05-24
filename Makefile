@@ -11,6 +11,7 @@ BUF                     := $(abspath $(BIN_DIR)/buf)
 PROTOC_GEN_GO           := $(abspath $(BIN_DIR)/protoc-gen-go)
 PROTOC_GEN_GO_GRPC      := $(abspath $(BIN_DIR)/protoc-gen-go-grpc)
 PROTOC_GEN_GRPC_GATEWAY := $(abspath $(BIN_DIR)/protoc-gen-grpc-gateway)
+PROTOC_GEN_DOC          := $(abspath $(BIN_DIR)/protoc-gen-doc)
 
 buf: $(BUF)
 $(BUF):
@@ -28,8 +29,12 @@ protoc-gen-grpc-gateway: $(PROTOC_GEN_GRPC_GATEWAY)
 $(PROTOC_GEN_GRPC_GATEWAY):
 	cd ./tools && go build -o ../bin/protoc-gen-grpc-gateway github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
 
+protoc-gen-doc: $(PROTOC_GEN_DOC)
+$(PROTOC_GEN_DOC):
+	cd ./tools && go build -o ../bin/protoc-gen-doc github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+
 .PHONY: gen-proto
-gen-proto: $(BUF) $(PROTOC_GEN_GO) $(PROTOC_GEN_GO_GRPC) $(PROTOC_GEN_GRPC_GATEWAY)
+gen-proto: $(BUF) $(PROTOC_GEN_GO) $(PROTOC_GEN_GO_GRPC) $(PROTOC_GEN_GRPC_GATEWAY) $(PROTOC_GEN_DOC)
 	$(BUF) generate \
 		--path ./proto
 
