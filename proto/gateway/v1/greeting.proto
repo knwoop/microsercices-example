@@ -14,6 +14,11 @@ service GreeterService {
       get: "/say_hello/{name}"
     };
   }
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {
+    option (google.api.http) = {
+      get: "/user/{id}"
+    };
+  }
 }
 
 // The request message containing the user's name.
@@ -24,4 +29,17 @@ message SayHelloRequest {
 // The response message containing the greetings
 message GreeterServiceSayHelloResponse {
   string message = 1;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
 }
